@@ -1,0 +1,6 @@
+####### Ignore paths #######
+OpenCV/
+source/build
+
+
+####### Ignore files #######
