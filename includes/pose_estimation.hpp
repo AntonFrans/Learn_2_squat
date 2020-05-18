@@ -23,35 +23,18 @@ class Pose_Estimation
 
         // DNN specifications
         Net Dnn_Net = readNetFromCaffe(Proto_File, Weights_File);
-        Mat Dnn_Prediction_Output;
-        
+
         //Frame specifications
-        const int Frame_Width;
-        const int Frame_Height;
-        Mat       Frame;
-
-
-        // Keypoint specifications
-        const int Keypoint_Index_Pairs[KEYPOINTS][PAIRS] = 
-        {   
-            {0,1}  , {1,2}, 
-            {2,3}  , {3,4}, 
-            {1,5}  , {5,6},
-            {6,7}  , {1,14}, 
-            {14,8} , {8,9}, 
-            {9,10} , {14,11}, 
-            {11,12}, {12,13}
-        };
-        
+        int Frame_Width;
+        int Frame_Height;
+        Mat Frame;
 
     public:
         Pose_Estimation(int Frame_Width, int Frame_Height);
 
-        void Prediction(Mat Frame);
+        Mat Prediction(Mat Frame);
 
-        void Draw_Keypoints(Mat Frame);
-
-        void test();
+        void Set_Net_Computation_On_GPU();
 
         ~Pose_Estimation();
 
