@@ -51,10 +51,12 @@ private:
     Mat           Frame;
     VideoCapture  Video_Capture;
     VideoWriter   Video_Writer;
+    vector<Point> points;
     int           Device_ID;
     int           API_ID;
     int           Video_Capture_Value;
-    vector<Point> points;
+    const int     Frame_Height;
+    const int     Frame_Width;
 
     const Keypoint_Pairs_Type Skeleton_Body_Part_Connections[BODY_PARTS] = 
     {
@@ -79,7 +81,7 @@ private:
     };
 
 public:
-    Camera(int Video_Capture_Value, int Device_ID, int API_ID);
+    Camera(int Video_Capture_Value, int Device_ID, int API_ID, const int Frame_Height, const int Frame_Width);
 
     void Open_Camera();
     

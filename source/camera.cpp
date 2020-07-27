@@ -1,7 +1,7 @@
 #include <camera.hpp>
 
-Camera::Camera(int Video_Capture_Value, int Device_ID, int API_ID) 
-: points(nPoints)
+Camera::Camera(int Video_Capture_Value, int Device_ID, int API_ID, const int Frame_Height, const int Frame_Width) 
+: points(nPoints), Frame_Height(Frame_Height), Frame_Width(Frame_Width)
 {
     this->Video_Capture_Value = Video_Capture_Value;
     this->Device_ID           = Device_ID;
@@ -76,8 +76,6 @@ void Camera::Draw_Keypoints(Mat Prediction_Output)
     int H = Prediction_Output.size[2];
     int W = Prediction_Output.size[3];
     const float thresh     = 0.01;
-    const int Frame_Width  = 640;
-    const int Frame_Height = 480;
     
     for (int n=0; n < nPoints; n++)
     { 
@@ -105,11 +103,9 @@ void Camera::Draw_Keypoints(Mat Prediction_Output)
 
 void Camera::Write_Skeleton_To_Frame(Mat Prediction_Output, double Frame_Process_Time)
 {
-    const int Frame_Width  = 640;
-    const int Frame_Height = 480;
     const float thresh     = 0.01;
-    int H = Prediction_Output.size[2];
-    int W = Prediction_Output.size[3];
+    int H                  = Prediction_Output.size[2];
+    int W                  = Prediction_Output.size[3];
 
     Body_Part_Index Body_Part;
 

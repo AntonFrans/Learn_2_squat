@@ -1,8 +1,9 @@
-# CMAKE variables
-set( PATH_INCLUDES /home/error/Desktop/learn_2_squat/includes ) 
-
 # CMAKE requirements
 cmake_minimum_required(VERSION 3.10)
+
+# CMAKE variables
+set( PATH_INCLUDES /home/error/Desktop/learn_2_squat/includes ) 
+set( PATH_SOURCE   /home/error/Desktop/learn_2_squat/source )
 
 # set the project name and version
 project(learn_2_squat VERSION 1.0)
@@ -19,12 +20,12 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 include_directories(${PATH_INCLUDES})
 
 # Libraries
-add_library(camera_LIBARARY          camera.cpp ${PATH_INCLUDES}/camera.hpp)
-add_library(pose_estimation_LIBARARY pose_estimation.cpp ${PATH_INCLUDES}/pose_estimation.hpp)
-add_library(utility_LIBARARY utility.cpp ${PATH_INCLUDES}/utility.hpp)
+add_library(camera_LIBARARY          ${PATH_SOURCE}/camera.cpp ${PATH_INCLUDES}/camera.hpp)
+add_library(pose_estimation_LIBARARY ${PATH_SOURCE}/pose_estimation.cpp ${PATH_INCLUDES}/pose_estimation.hpp)
+add_library(utility_LIBARARY         ${PATH_SOURCE}/utility.cpp ${PATH_INCLUDES}/utility.hpp)
 
 # Add executables
-add_executable(main_exe main.cpp)
+add_executable(main_exe ${PATH_SOURCE}/main.cpp)
 
 # Link libraries
 target_link_libraries(main_exe PRIVATE camera_LIBARARY pose_estimation_LIBARARY utility_LIBARARY ${OpenCV_LIBS} )
