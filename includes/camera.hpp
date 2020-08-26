@@ -101,7 +101,7 @@ public:
 
     void Draw_Keypoints(Mat Prediction_Output);
 
-    void Write_Skeleton_To_Frame(Mat Frame, double Frame_Process_Time);
+    void Write_Skeleton_To_Frame(Mat Frame);
 
     ~Camera();
 };

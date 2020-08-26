@@ -68,7 +68,7 @@ int Camera::Get_Frame_Height()
 
 void Camera::Write_Text_To_Frame(double Process_Time)
 {
-    putText(Frame, cv::format("time taken = %.2f sec", Process_Time), cv::Point(50, 50), cv::FONT_HERSHEY_COMPLEX, .8, cv::Scalar(255, 50, 0), 2);
+    putText(Frame, cv::format("FPS = %.2f sec", Process_Time), cv::Point(50, 50), cv::FONT_HERSHEY_COMPLEX, .8, cv::Scalar(255, 50, 0), 2);
 } // Write_Text_To_Frame
 
 void Camera::Draw_Keypoints(Mat Prediction_Output)
@@ -101,7 +101,7 @@ void Camera::Draw_Keypoints(Mat Prediction_Output)
     }
 } // Draw_Keypoints
 
-void Camera::Write_Skeleton_To_Frame(Mat Prediction_Output, double Frame_Process_Time)
+void Camera::Write_Skeleton_To_Frame(Mat Prediction_Output)
 {
     const float thresh     = 0.01;
     int H                  = Prediction_Output.size[2];
