@@ -53,7 +53,6 @@ void Pose_Estimation::TFlite_Model()
     interpreter->Invoke();
 
     float* output = interpreter->typed_output_tensor<float>(0);
-
 }
 
 Pose_Estimation::~Pose_Estimation()
